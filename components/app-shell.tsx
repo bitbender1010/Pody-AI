@@ -4,6 +4,7 @@ import { useRef, useState, type ReactNode } from "react";
 import { PanelLeft } from "lucide-react";
 import { MobileHeader } from "@/components/mobile-header";
 import { Sidebar } from "@/components/sidebar";
+import { PwaProvider } from "@/components/pwa-provider";
 
 type AppShellProps = {
   children: ReactNode;
@@ -21,6 +22,7 @@ export function AppShell({ children }: AppShellProps) {
     });
   }
   return (
+    <PwaProvider>
     <div className="min-h-screen bg-cloud text-ink">
       <div className="flex min-h-screen bg-cloud">
         <Sidebar collapsed={collapsed} onToggle={toggleSidebar} toggleRef={collapseRef} />
@@ -37,5 +39,6 @@ export function AppShell({ children }: AppShellProps) {
         </div>
       </div>
     </div>
+    </PwaProvider>
   );
 }

@@ -8,6 +8,7 @@ import Link from "next/link";
 import Image from "next/image";
 import podyLogo from "@/public/pody-ai.png";
 import { cn } from "@/lib/utils";
+import { InstallAppButton } from "@/components/pwa-provider";
 
 export function Sidebar({ collapsed, onToggle, toggleRef }: {
   collapsed: boolean;
@@ -39,6 +40,7 @@ export function Sidebar({ collapsed, onToggle, toggleRef }: {
         <NavItem href="/faq" icon={HelpCircle} label="FAQ" />
         <NavItem href="/support" icon={Headphones} label="Support" />
       </nav>
+      <InstallAppButton />
 
       <div className="mt-8">
         <RecentChats />

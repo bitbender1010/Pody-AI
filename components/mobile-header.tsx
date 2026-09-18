@@ -6,6 +6,7 @@ import podyLogo from "@/public/pody-ai.png";
 import { Headphones, HelpCircle, Menu, MessageSquarePlus, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { RecentChats } from "@/components/recent-chats";
+import { InstallAppButton } from "@/components/pwa-provider";
 
 export function MobileHeader() {
   const [isOpen, setIsOpen] = useState(false);
@@ -90,6 +91,7 @@ export function MobileHeader() {
             Support
           </Link>
         </nav>
+        <InstallAppButton onSelect={() => setIsOpen(false)} />
         <div className="mt-8">
           <RecentChats onSelect={() => setIsOpen(false)} />
         </div>
