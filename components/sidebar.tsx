@@ -5,6 +5,8 @@ import { NavItem } from "@/components/nav-item";
 import { RecentChats } from "@/components/recent-chats";
 import type { Ref } from "react";
 import Link from "next/link";
+import Image from "next/image";
+import podyLogo from "@/public/pody-ai.png";
 import { cn } from "@/lib/utils";
 
 export function Sidebar({ collapsed, onToggle, toggleRef }: {
@@ -15,18 +17,8 @@ export function Sidebar({ collapsed, onToggle, toggleRef }: {
   return (
     <aside id="desktop-sidebar" className={cn("sticky top-0 hidden h-dvh w-[260px] shrink-0 overflow-y-auto overscroll-contain border-r border-line bg-white/70 px-4 py-5 [scrollbar-color:#D8DADC_transparent] [scrollbar-width:thin]", !collapsed && "lg:block")}>
       <div className="flex items-start justify-between">
-        <Link href="/" className="flex min-w-0 items-center gap-2.5">
-          <div className="grid size-8 shrink-0 place-items-center rounded-full bg-undp text-[11px] font-medium text-white">
-            P
-          </div>
-          <span>
-            <span className="block text-sm font-medium text-ink">
-              UniPods AI
-            </span>
-            <span className="block truncate text-[10px] text-slate-500">
-              UNDP Hackathon Assistant
-            </span>
-          </span>
+        <Link href="/" className="block min-w-0" aria-label="Pody AI home">
+          <Image src={podyLogo} alt="Pody AI" className="h-auto w-[120px] max-w-full" sizes="160px" priority />
         </Link>
         <button
           ref={toggleRef}

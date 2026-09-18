@@ -1,7 +1,7 @@
 "use client";
 
 import { FileText, ImageIcon, Mic, Paperclip, SendHorizontal, X } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type Ref } from "react";
 
 function Attachment({ file, onRemove }: { file: File; onRemove: () => void }) {
   const [preview, setPreview] = useState<string>();
@@ -32,8 +32,11 @@ function Attachment({ file, onRemove }: { file: File; onRemove: () => void }) {
   );
 }
 
-export function ChatInput() {
-  const [value, setValue] = useState("");
+export function ChatInput({ value, onChange, inputRef }: {
+  value: string;
+  onChange: (value: string) => void;
+  inputRef: Ref<HTMLTextAreaElement>;
+}) {
   const [files, setFiles] = useState<File[]>([]);
   const [error, setError] = useState("");
   const fileInput = useRef<HTMLInputElement>(null);
@@ -63,8 +66,9 @@ export function ChatInput() {
         )}
         {error && <p role="alert" className="mb-2 text-xs text-red-600">{error}</p>}
         <textarea
+          ref={inputRef}
           value={value}
-          onChange={(event) => setValue(event.target.value)}
+          onChange={(event) => onChange(event.target.value)}
           placeholder="How can I help you today?"
           aria-label="Message"
           className="h-[58px] w-full resize-none bg-transparent text-sm leading-6 text-ink outline-none placeholder:text-slate-400"

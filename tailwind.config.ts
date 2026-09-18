@@ -8,6 +8,15 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      keyframes: {
+        "drawer-in": {
+          from: { transform: "translateX(-100%)" },
+          to: { transform: "translateX(0)" },
+        },
+      },
+      animation: {
+        "drawer-in": "drawer-in 180ms ease-out",
+      },
       colors: {
         ink: "#20242C",
         cloud: "#FCFCFB",

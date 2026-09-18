@@ -4,17 +4,20 @@ type SuggestedQuestionCardProps = {
   question: string;
   answer: string;
   icon: LucideIcon;
+  onSelect: () => void;
 };
 
 export function SuggestedQuestionCard({
   question,
   answer,
   icon: Icon,
+  onSelect,
 }: SuggestedQuestionCardProps) {
   return (
     <button
       className="group flex min-h-14 w-full items-center gap-2 rounded-lg border border-line/60 bg-white/60 px-3 py-2 text-left transition hover:border-slate-300 hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-undp"
       type="button"
+      onClick={onSelect}
       title={answer}
     >
       <span

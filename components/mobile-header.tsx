@@ -1,40 +1,75 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
+import podyLogo from "@/public/pody-ai.png";
 import { Headphones, HelpCircle, Menu, MessageSquarePlus, X } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export function MobileHeader() {
   const [isOpen, setIsOpen] = useState(false);
+  const drawerRef = useRef<HTMLDialogElement>(null);
+
+  useEffect(() => {
+    const drawer = drawerRef.current;
+    if (!isOpen) {
+      drawer?.close();
+      return;
+    }
+    drawer?.showModal();
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const desktop = window.matchMedia("(min-width: 1024px)");
+    const closeOnDesktop = () => { if (desktop.matches) setIsOpen(false); };
+    desktop.addEventListener("change", closeOnDesktop);
+    closeOnDesktop();
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      desktop.removeEventListener("change", closeOnDesktop);
+      drawer?.close();
+    };
+  }, [isOpen]);
 
   return (
     <header className="sticky top-0 z-20 border-b border-line bg-white/90 px-4 py-3 backdrop-blur lg:hidden">
       <div className="flex h-9 items-center justify-between">
-        <Link href="/" className="flex items-center gap-3">
-          <div className="grid size-8 place-items-center rounded-full bg-undp text-[11px] font-medium text-white">
-            P
-          </div>
-          <span>
-            <span className="block text-sm font-medium text-ink">
-              UniPods AI
-            </span>
-            <span className="text-[10px] text-slate-500">
-              UNDP Hackathon Assistant
-            </span>
-          </span>
+        <Link href="/" className="block min-w-0" aria-label="Pody AI home">
+          <Image src={podyLogo} alt="Pody AI" className="h-auto w-[120px] max-w-full" sizes="120px" priority />
         </Link>
         <button
           type="button"
           className="grid size-9 place-items-center rounded-lg text-slate-600 hover:bg-slate-100"
           aria-label={isOpen ? "Close navigation" : "Open navigation"}
           aria-expanded={isOpen}
+          aria-controls="mobile-navigation"
           onClick={() => setIsOpen((open) => !open)}
         >
           {isOpen ? <X className="size-[18px]" /> : <Menu className="size-[18px]" />}
         </button>
       </div>
-      {isOpen && (
-        <nav className="mt-3 grid gap-1 border-t border-line pt-3">
+      <dialog
+        ref={drawerRef}
+        id="mobile-navigation"
+        aria-label="Navigation"
+        onCancel={() => setIsOpen(false)}
+        onClick={(event) => {
+          if (event.target === event.currentTarget) {
+            const bounds = event.currentTarget.getBoundingClientRect();
+            if (event.clientX > bounds.right || event.clientX < bounds.left) setIsOpen(false);
+          }
+        }}
+        className="fixed inset-y-0 left-0 right-auto m-0 h-dvh max-h-none w-[280px] max-w-[85vw] overflow-y-auto overscroll-contain border-0 border-r border-line bg-white p-4 text-ink backdrop:bg-black/25 open:animate-drawer-in motion-reduce:animate-none"
+      >
+        <div className="flex items-center justify-between gap-3">
+          <Link href="/" aria-label="Pody AI home" onClick={() => setIsOpen(false)}>
+            <Image src={podyLogo} alt="Pody AI" className="h-auto w-[150px]" sizes="150px" />
+          </Link>
+          <button type="button" aria-label="Close navigation" title="Close navigation" onClick={() => setIsOpen(false)}
+            className="grid size-9 shrink-0 place-items-center rounded-lg text-slate-600 hover:bg-slate-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-undp">
+            <X className="size-[18px]" aria-hidden="true" />
+          </button>
+        </div>
+        <nav className="mt-6 grid gap-1">
           <Link
             href="/"
             className="flex h-10 items-center gap-3 rounded-lg px-3 text-sm text-slate-600 hover:bg-slate-100"
@@ -60,7 +95,7 @@ export function MobileHeader() {
             Support
           </Link>
         </nav>
-      )}
+      </dialog>
     </header>
   );
 }
