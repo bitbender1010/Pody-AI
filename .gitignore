@@ -1,0 +1,28 @@
+# Dependencies
+/node_modules/
+
+# Next.js and TypeScript generated output
+/.next/
+/out/
+/build/
+*.tsbuildinfo
+next-env.d.ts
+
+# Local environment files (keep templates versioned)
+.env*
+!.env.example
+!.env.sample
+
+# Local deployment settings and logs
+/.vercel/
+*.log
+
+# Test output and local layout screenshots
+/coverage/
+/playwright-report/
+/test-results/
+/layout-*x*.png
+
+# OS files
+.DS_Store
+Thumbs.db
