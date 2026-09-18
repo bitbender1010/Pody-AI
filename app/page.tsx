@@ -60,6 +60,7 @@ export default function HomePage() {
                 question={item.question}
                 answer={item.answer}
                 icon={item.icon}
+                tone={item.tone}
                 onSelect={() => selectQuestion(item.question)}
               />
             ))}

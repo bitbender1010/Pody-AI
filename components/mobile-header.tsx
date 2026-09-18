@@ -5,6 +5,7 @@ import Image from "next/image";
 import podyLogo from "@/public/pody-ai.png";
 import { Headphones, HelpCircle, Menu, MessageSquarePlus, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { RecentChats } from "@/components/recent-chats";
 
 export function MobileHeader() {
   const [isOpen, setIsOpen] = useState(false);
@@ -32,10 +33,7 @@ export function MobileHeader() {
 
   return (
     <header className="sticky top-0 z-20 border-b border-line bg-white/90 px-4 py-3 backdrop-blur lg:hidden">
-      <div className="flex h-9 items-center justify-between">
-        <Link href="/" className="block min-w-0" aria-label="Pody AI home">
-          <Image src={podyLogo} alt="Pody AI" className="h-auto w-[120px] max-w-full" sizes="120px" priority />
-        </Link>
+      <div className="flex h-9 items-center gap-3">
         <button
           type="button"
           className="grid size-9 place-items-center rounded-lg text-slate-600 hover:bg-slate-100"
@@ -46,28 +44,25 @@ export function MobileHeader() {
         >
           {isOpen ? <X className="size-[18px]" /> : <Menu className="size-[18px]" />}
         </button>
+        <Link href="/" className="block min-w-0" aria-label="Pody AI home">
+          <Image src={podyLogo} alt="Pody AI" className="h-auto w-[120px] max-w-full" sizes="120px" priority />
+        </Link>
       </div>
       <dialog
         ref={drawerRef}
         id="mobile-navigation"
         aria-label="Navigation"
         onCancel={() => setIsOpen(false)}
-        onClick={(event) => {
-          if (event.target === event.currentTarget) {
-            const bounds = event.currentTarget.getBoundingClientRect();
-            if (event.clientX > bounds.right || event.clientX < bounds.left) setIsOpen(false);
-          }
-        }}
-        className="fixed inset-y-0 left-0 right-auto m-0 h-dvh max-h-none w-[280px] max-w-[85vw] overflow-y-auto overscroll-contain border-0 border-r border-line bg-white p-4 text-ink backdrop:bg-black/25 open:animate-drawer-in motion-reduce:animate-none"
+        className="fixed inset-0 m-0 h-dvh max-h-none w-full max-w-none overflow-y-auto overscroll-contain border-0 bg-white px-4 py-3 text-ink backdrop:bg-black/25 open:animate-drawer-in motion-reduce:animate-none"
       >
-        <div className="flex items-center justify-between gap-3">
-          <Link href="/" aria-label="Pody AI home" onClick={() => setIsOpen(false)}>
-            <Image src={podyLogo} alt="Pody AI" className="h-auto w-[150px]" sizes="150px" />
-          </Link>
+        <div className="flex h-9 items-center gap-3">
           <button type="button" aria-label="Close navigation" title="Close navigation" onClick={() => setIsOpen(false)}
             className="grid size-9 shrink-0 place-items-center rounded-lg text-slate-600 hover:bg-slate-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-undp">
             <X className="size-[18px]" aria-hidden="true" />
           </button>
+          <Link href="/" className="block min-w-0" aria-label="Pody AI home" onClick={() => setIsOpen(false)}>
+            <Image src={podyLogo} alt="Pody AI" className="h-auto w-[120px] max-w-full" sizes="120px" />
+          </Link>
         </div>
         <nav className="mt-6 grid gap-1">
           <Link
@@ -95,6 +90,9 @@ export function MobileHeader() {
             Support
           </Link>
         </nav>
+        <div className="mt-8">
+          <RecentChats onSelect={() => setIsOpen(false)} />
+        </div>
       </dialog>
     </header>
   );
