@@ -1,4 +1,4 @@
-# Pody AI / UniPods AI
+# Pody Bot / UniPods AI
 
 A frontend prototype for the UNDP Hackathon Assistant, helping participants find information about the UniPods AI Innovation Programme. Programme content is currently hardcoded from supplied team materials and WhatsApp messages.
 
@@ -59,14 +59,14 @@ Edit `data/suggested-questions.ts`, `data/faqs.ts`, and `data/support.ts` to upd
 
 ## Progressive Web App (PWA) & Installation
 
-Pody AI is configured as an installable web app across desktop and mobile browsers.
+Pody Bot is configured as an installable web app across desktop and mobile browsers.
 
 ### Installation Features
 
 - **Web App Manifest**: Configured in `app/manifest.ts` with standalone display mode, `#FCFCFB` theme and background colors, root start URL and scope, and 192x192 / 512x512 app icons.
 - **App Icons**: 192px and 512px square icons (`public/icons/icon-192.png`, `public/icons/icon-512.png`) and an Apple touch icon (`public/icons/apple-touch-icon.png`) with proportional logo spacing.
-- **Shared State & First-Visit Invitation**: On the first eligible visit in a browser where installation is available (or iOS guidance applies), a compact "Install Pody AI" modal invitation appears. Dismissing the modal ("Not now") persists in `localStorage` (`pody-install-invitation-seen-v1`) so visitors are not repeatedly prompted.
-- **Navigation Install Action**: "Install Pody AI" button is integrated in the desktop sidebar and full-screen mobile menu between primary navigation and Recent Chats. The button is automatically hidden when running in standalone mode or after installation.
+- **Shared State & First-Visit Invitation**: On the first eligible visit in a browser where installation is available (or iOS guidance applies), a compact "Install Pody Bot" modal invitation appears. Dismissing the modal ("Not now") persists in `localStorage` (`pody-install-invitation-seen-v1`) so visitors are not repeatedly prompted.
+- **Navigation Install Action**: "Install Pody Bot" button is integrated in the desktop sidebar and full-screen mobile menu between primary navigation and Recent Chats. The button is automatically hidden when running in standalone mode or after installation.
 - **Cross-Browser Guidance**:
   - **Chromium / Edge / Android**: Captures `beforeinstallprompt` and triggers native install dialog on click.
   - **iOS / Safari (iPhone/iPad)**: Detects iOS and presents step-by-step guidance (*"Open your browser's Share menu, choose Add to Home Screen, then tap Add"*).

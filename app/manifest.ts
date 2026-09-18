@@ -3,8 +3,8 @@ import type { MetadataRoute } from "next";
 export default function manifest(): MetadataRoute.Manifest {
   return {
     id: "/",
-    name: "Pody AI",
-    short_name: "Pody AI",
+    name: "Pody Bot",
+    short_name: "Pody Bot",
     description: "UNDP Hackathon Assistant for the UniPods AI Innovation Programme.",
     start_url: "/",
     scope: "/",

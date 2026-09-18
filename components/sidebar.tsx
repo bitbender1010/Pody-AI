@@ -6,7 +6,7 @@ import { RecentChats } from "@/components/recent-chats";
 import type { Ref } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import podyLogo from "@/public/pody-ai.png";
+import podyLogo from "@/public/pody-bot.png";
 import { cn } from "@/lib/utils";
 import { InstallAppButton } from "@/components/pwa-provider";
 
@@ -18,8 +18,8 @@ export function Sidebar({ collapsed, onToggle, toggleRef }: {
   return (
     <aside id="desktop-sidebar" className={cn("sticky top-0 hidden h-dvh w-[260px] shrink-0 overflow-y-auto overscroll-contain border-r border-line bg-white/70 px-4 py-5 [scrollbar-color:#D8DADC_transparent] [scrollbar-width:thin]", !collapsed && "lg:block")}>
       <div className="flex items-start justify-between">
-        <Link href="/" className="block min-w-0" aria-label="Pody AI home">
-          <Image src={podyLogo} alt="Pody AI" className="h-auto w-[120px] max-w-full" sizes="160px" priority />
+        <Link href="/" className="block min-w-0" aria-label="Pody Bot home">
+          <Image src={podyLogo} alt="Pody Bot" className="h-auto w-[120px] max-w-full" sizes="160px" priority />
         </Link>
         <button
           ref={toggleRef}

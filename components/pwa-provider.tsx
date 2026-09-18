@@ -166,7 +166,7 @@ export function PwaProvider({ children }: { children: ReactNode }) {
       >
         <div className="flex items-center justify-between gap-3">
           <h2 id="install-title" className="text-base font-medium">
-            Install Pody AI
+            Install Pody Bot
           </h2>
           <button
             type="button"
@@ -182,8 +182,8 @@ export function PwaProvider({ children }: { children: ReactNode }) {
           {dialogMode === "help"
             ? ios
               ? "Open your browser's Share menu, choose Add to Home Screen, then tap Add. If the option is missing, open this page in Safari."
-              : "Open your browser's menu and look for Install Pody AI, Install app, or Add to Home Screen. If no option is available, try Chrome or Edge."
-            : "Add Pody AI to your home screen for quick access. You can keep using it in your browser too."}
+              : "Open your browser's menu and look for Install Pody Bot, Install app, or Add to Home Screen. If no option is available, try Chrome or Edge."
+            : "Add Pody Bot to your home screen for quick access. You can keep using it in your browser too."}
         </p>
         {error && (
           <p role="alert" className="mt-2 text-xs text-red-600">
@@ -203,7 +203,7 @@ export function PwaProvider({ children }: { children: ReactNode }) {
               type="button"
               disabled={busy}
               onClick={() => void install()}
-              className="flex items-center gap-2 rounded-md bg-ink px-3 py-2 text-sm text-white hover:bg-slate-800 disabled:opacity-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-undp"
+              className="flex items-center gap-2 rounded-md bg-ink px-3 py-2 text-sm text-white hover:bg-slate-800 disabled:opacity-50 focus-visible:outline focus-visible:outline-undp"
             >
               <Download className="size-4" aria-hidden="true" />
               Install
@@ -237,7 +237,7 @@ export function InstallAppButton({
       )}
     >
       <Download className="size-[17px]" aria-hidden="true" />
-      Install Pody AI
+      Install Pody Bot
     </button>
   );
 }

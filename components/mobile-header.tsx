@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import podyLogo from "@/public/pody-ai.png";
+import podyLogo from "@/public/pody-bot.png";
 import { Headphones, HelpCircle, Menu, MessageSquarePlus, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { RecentChats } from "@/components/recent-chats";
@@ -45,8 +45,8 @@ export function MobileHeader() {
         >
           {isOpen ? <X className="size-[18px]" /> : <Menu className="size-[18px]" />}
         </button>
-        <Link href="/" className="block min-w-0" aria-label="Pody AI home">
-          <Image src={podyLogo} alt="Pody AI" className="h-auto w-[120px] max-w-full" sizes="120px" priority />
+        <Link href="/" className="block min-w-0" aria-label="Pody Bot home">
+          <Image src={podyLogo} alt="Pody Bot" className="h-auto w-[120px] max-w-full" sizes="120px" priority />
         </Link>
       </div>
       <dialog
@@ -61,8 +61,8 @@ export function MobileHeader() {
             className="grid size-9 shrink-0 place-items-center rounded-lg text-slate-600 hover:bg-slate-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-undp">
             <X className="size-[18px]" aria-hidden="true" />
           </button>
-          <Link href="/" className="block min-w-0" aria-label="Pody AI home" onClick={() => setIsOpen(false)}>
-            <Image src={podyLogo} alt="Pody AI" className="h-auto w-[120px] max-w-full" sizes="120px" />
+          <Link href="/" className="block min-w-0" aria-label="Pody Bot home" onClick={() => setIsOpen(false)}>
+            <Image src={podyLogo} alt="Pody Bot" className="h-auto w-[120px] max-w-full" sizes="120px" />
           </Link>
         </div>
         <nav className="mt-6 grid gap-1">

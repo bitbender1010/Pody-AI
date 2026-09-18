@@ -4,10 +4,10 @@ import "@/app/globals.css";
 import { AppShell } from "@/components/app-shell";
 
 export const metadata: Metadata = {
-  applicationName: "Pody AI",
-  appleWebApp: { capable: true, title: "Pody AI", statusBarStyle: "default" },
+  applicationName: "Pody Bot",
+  appleWebApp: { capable: true, title: "Pody Bot", statusBarStyle: "default" },
   icons: { icon: "/icons/icon-192.png", apple: "/icons/apple-touch-icon.png" },
-  title: "Pody AI | UniPods AI",
+  title: "Pody Bot | UniPods AI",
   description: "UNDP Hackathon Assistant for the UniPods AI Innovation Programme.",
 };
 
